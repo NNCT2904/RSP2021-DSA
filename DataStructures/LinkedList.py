@@ -1,6 +1,8 @@
 from typing import Any
 
 class Node:
+    Data: Any
+    Self: 'Node'
     def __init__(self, data=None, next=None):
         self.Data = data
         self.Next = next
@@ -28,6 +30,25 @@ class LinkedList:
             currentNode = currentNode.Next
 
         self.AddAfter(data=data, previous=currentNode)
+
+    def FindNode(self, data: Any):
+        currentNode = self.Head
+        while(currentNode != self.Tail):
+            if (currentNode.Data == data):
+                return currentNode
+            currentNode = currentNode.Next
+        return None
+
+    def RemoveNode(self, node:Node):
+        currentNode = self.Head
+        if (self.FindNode(node.Data) == None): raise Exception('This node is invalid')
+        
+        while(currentNode.Next != self.Tail):
+            if (currentNode.Next == node):
+                currentNode.Next = currentNode.Next.Next
+                return
+            currentNode = currentNode.Next
+        
 
     def PrintList(self):
         currentNode = self.Head.Next
