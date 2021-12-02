@@ -2,7 +2,7 @@ from typing import Any
 
 class Node:
     Data: Any
-    Self: 'Node'
+    Next: 'Node'
     def __init__(self, data=None, next=None):
         self.Data = data
         self.Next = next
